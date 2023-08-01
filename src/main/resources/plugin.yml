@@ -1,0 +1,9 @@
+name: MusicPlayer
+version: '${project.version}'
+main: net.simpvp.musicplayer.MusicPlayer
+api-version: 1.15
+description: Play NBS files to players
+depend: [NoteBlockAPI]
+commands:
+  musicplayer:
+    description: Play a song to players
