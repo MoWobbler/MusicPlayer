@@ -2,6 +2,8 @@ package net.simpvp.musicplayer;
 
 import com.xxmicloxx.NoteBlockAPI.model.Song;
 import com.xxmicloxx.NoteBlockAPI.model.SoundCategory;
+import com.xxmicloxx.NoteBlockAPI.model.playmode.MonoStereoMode;
+import com.xxmicloxx.NoteBlockAPI.model.playmode.StereoMode;
 import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
@@ -86,6 +88,11 @@ public class PlaySong implements Listener {
         for (Player p : getNearbyPlayers(location, distance)) {
             rsp.addPlayer(p);
         }
+
+        StereoMode stereoMode = new StereoMode();
+        stereoMode.setFallbackChannelMode(new MonoStereoMode());
+        rsp.setChannelMode(stereoMode);
+
         rsp.setCategory(SoundCategory.RECORDS);
         rsp.setPlaying(true);
         songs.put(rsp, location.getWorld());
